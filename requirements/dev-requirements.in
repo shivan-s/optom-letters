@@ -1,0 +1,7 @@
+-c requirements.txt
+pytest
+ipdb
+flake8
+mypy
+pytest-cov
+types-python-slugify

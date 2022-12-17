@@ -1,0 +1,108 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "optom_letters"
+version = "0.0.1"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 79
+default_section = "THIRDPARTY"
+known_first_party = ["utils"]
+known_third_party = []
+
+[tool.black]
+line-length = 79
+include = '\.pyi?%'
+
+[tool.mypy]
+mypy_path = "."
+warn_unused_ignores = true
+warn_redundant_casts = true
+check_untyped_defs = true
+strict_optional = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = [
+  "-n",
+  "auto",
+  "--cov",
+  "--cov-config=./pyproject.toml",
+  "--cov-branch",
+  "--cov-report=html",
+  "--create-db",
+  "--no-migrations",
+]
+testpaths = ["./tests"]
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+log_level = "ERROR"
+log_format = "%(asctime)s %(levelname)s %(message)s"
+log_date_format = "%Y-%m-%d %H:%M:%S"
+log_cli = true
+log_cli_level = "ERROR"
+log_cli_format = "%(asctime)s %(levelname)s %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+[tool.coverage.run]
+branch = true
+omit = ["*/tests/*", "*/migrations/*"]
+
+
+[tool.pydocstyle]
+match = '.*\.py'
+inherit = false
+convention = "google"
+
+
+# [tool.commitizen]
+# name = "cz_conventional_commits"
+# version_files = ["pyproject.toml"]
+# version = "0.0.1"
+# tag_format = "$version"
+#
+# style = [
+#   [
+#     "qmark",
+#     "fg:#ff9d00 bold",
+#   ],
+#   [
+#     "question",
+#     "bold",
+#   ],
+#   [
+#     "answer",
+#     "fg:#ff9d00 bold",
+#   ],
+#   [
+#     "pointer",
+#     "fg:#ff9d00 bold",
+#   ],
+#   [
+#     "highlighted",
+#     "fg:#ff9d00 bold",
+#   ],
+#   [
+#     "selected",
+#     "fg:#cc5454",
+#   ],
+#   [
+#     "separator",
+#     "fg:#cc5454",
+#   ],
+#   [
+#     "instruction",
+#     "",
+#   ],
+#   [
+#     "text",
+#     "",
+#   ],
+#   [
+#     "disabled",
+#     "fg:#858585 italic",
+#   ],
+# ]
