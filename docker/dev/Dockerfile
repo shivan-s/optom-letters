@@ -5,12 +5,6 @@ ENV PYTHONNUNBUFFERED 1
 
 WORKDIR /code
 
-# install C dependences
-# hadolint ignore=DL3008
-RUN apt-get update && \
-  apt-get -y --no-install-recommends install build-essential && \
-  rm -rf /var/lib/apt/lists/*
-
 # install python dependences
 # install pip-tools and pip
 # hadolint ignore=DL3013
