@@ -3,8 +3,8 @@ version: "3.8"
 
 services:
   app:
-    container_name: thumbnail_getter_app
-    image: thumbnail_getter:latest
+    container_name: optom-letters
+    image: optom-letters:latest
     build:
       context: ../..
       dockerfile: ./docker/prod/Dockerfile
@@ -15,3 +15,8 @@ services:
       - ../..:/code/
     ports:
       - "${APP_PORT:-8888}:8000"
+    command:
+      - sh
+      - -c
+      - |
+        gunicorn app.main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:80

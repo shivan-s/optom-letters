@@ -15,15 +15,10 @@ RUN apt-get update && \
 # install pip-tools and pip
 # hadolint ignore=DL3013
 RUN pip install --no-cache-dir -U pip-tools pip
-COPY requirements.in .
+COPY requirements requirements
 
 # hadolint ignore=DL3042
-RUN pip-compile -o requirements.txt requirements.in && \
-  pip install --no-cache-dir --no-deps -r requirements.txt
+RUN pip-compile -o ./requirements/requirements.txt ./requirements/requirements.in && \
+  pip install --no-cache-dir --no-deps -r ./requirements/requirements.txt
 
-# run entry scripts
-COPY ./docker/prod/entrypoint.sh .
-RUN chmod +x ./entrypoint.sh
-ENTRYPOINT ["sh", "/code/docker/prod/entrypoint.sh"]
-
-EXPOSE 8000
+EXPOSE 80
