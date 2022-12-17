@@ -15,4 +15,9 @@ COPY requirements requirements
 RUN pip-compile -o ./requirements/requirements.txt ./requirements/requirements.in && \
   pip install --no-cache-dir --no-deps -r ./requirements/requirements.txt
 
+# entrypoint
+COPY docker docker
+ENTRYPOINT ["docker/dev/entrypoint.sh"]
+
+
 EXPOSE 80

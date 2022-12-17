@@ -17,4 +17,9 @@ RUN pip-compile -o ./requirements/requirements.txt ./requirements/requirements.i
   pip install --no-cache-dir --no-deps -r ./requirements/requirements.txt && \
   pip install --no-cache-dir --no-deps -r ./requirements/dev-requirements.txt
 
+
+# entrypoint
+COPY docker docker
+ENTRYPOINT ["docker/dev/entrypoint.sh"]
+
 EXPOSE 8000
