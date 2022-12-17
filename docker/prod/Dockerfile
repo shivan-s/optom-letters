@@ -20,4 +20,4 @@ COPY docker docker
 ENTRYPOINT ["docker/dev/entrypoint.sh"]
 
 
-EXPOSE 80
+EXPOSE 8000

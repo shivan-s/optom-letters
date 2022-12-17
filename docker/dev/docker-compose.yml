@@ -14,4 +14,4 @@ services:
     volumes:
       - ../..:/code/
     ports:
-      - "${APP_PORT:-8889}:8000"
+      - "${APP_PORT:-8999}:8000"
