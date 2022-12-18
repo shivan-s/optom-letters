@@ -1,7 +1,7 @@
 """Main file."""
 import os
 import re
-from enum import Enum, auto
+from enum import Enum
 
 import backoff
 import openai
@@ -10,8 +10,6 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import pass_eval_context
 from markupsafe import Markup
 from openai.error import RateLimitError
-
-from app.models import ResponseModel
 
 openai.organization = os.getenv("OPENAI_ORGANIZATION")
 openai.api_key = os.getenv("OPENAI_API_KEY")
