@@ -60,21 +60,48 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="field">
-                                <label class="label has-text-left">Contents</label>
-                                <div class="control">
-                                    <textarea class="textarea has-fixed-size"
-                                        name="contents"
-                                        type="text"
-                                        placeholder="e.g r 6/6 l 6/6 good vision"
-                                        value="{{ contents }}"
-                                        rows="3"
-                                        required></textarea>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Addressed To</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="select">
+                                        <select name="addressed_to">
+                                            {% for option in options %}
+                                                <option>
+                                                    {{ option.value }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="field is-grouped">
-                                <div class="control">
-                                    <button class="button is-link" action="submit">Submit</button>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Contents</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <textarea class="textarea has-fixed-size"
+                                                name="contents"
+                                                type="text"
+                                                placeholder="e.g r 6/6 l 6/6 good vision"
+                                                value="{{ contents }}"
+                                                rows="3"
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal has-text-left">
+                                <div class="field-label"></div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <button hx-trigger="click delay:2s" class="button is-link" action="submit">Submit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
