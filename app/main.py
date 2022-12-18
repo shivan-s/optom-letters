@@ -58,7 +58,7 @@ async def generate_letters(
     addressed_to: str = Form(),
     optometrist: str = Form(),
     contents: str = Form(),
-) -> ResponseModel:
+):
     """Endpoint to generate letters."""
     model = "text-curie-001"
     # model = "text-davinci-003"
