@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-content">
+        <div id="copy-text" class="content has-text-left">{{ response|nl2br }}</div>
+    </div>
+    <div class="card-footer">
+        <button id="copy-button"
+            type="button"
+            class="card-footer-item button is-info is-light">
+            <span class="icon is-small"><span class="material-icons">content_copy</span></span>
+            <span>Copy</span>
+        </button>
+    </div>
+    <script defer>
+        document.querySelectorAll("#response").forEach(copyTextContainer => {
+            const textField = copyTextContainer.querySelector("#copy-text")
+            const copyButton = copyTextContainer.querySelector("#copy-button")
+            console.log(textField)
+            console.log(copyButton)
+
+            copyButton.addEventListener("click", () => {
+                const text = textField.innerHTML
+                navigator.clipboard.writeText(text);
+
+                copyButton.innerHTML = "Copied!";
+            });
+        });
+    </script>
+</div>

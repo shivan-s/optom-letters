@@ -6,3 +6,6 @@ openai
 requests
 backoff
 urllib3
+jinja2
+python-multipart
+markupsafe
