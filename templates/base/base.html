@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Optom Letters</title>
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+    </head>
+    <body>
+        <section class="hero is-fullheight">
+            <div class="hero-head"></div>
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="block">
+                        <p class="title">Optom Letters</p>
+                        <p class="subtitle">Tools for Optometrists</p>
+                    </div>
+                    <div class="container is-max-desktop">
+                        <form hx-post="/generate_letter"
+                            hx-swap="#response"
+                            hx-target="#response"
+                            hx-indicator="#indicator"
+                            hx-swap="outerHTML"
+                            action="post">
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Patient Name</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <input name="patient"
+                                                class="input"
+                                                type="text"
+                                                value="{{ patient }}"
+                                                placeholder="e.g John/Jane Doe"
+                                                required/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Optometrist</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <input name="optometrist"
+                                                class="input"
+                                                type="text"
+                                                value="{{ optometrist }}"
+                                                placeholder="e.g John/Jane Doe"
+                                                required/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Addressed To</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="select">
+                                        <select name="addressed_to">
+                                            {% for option in options %}
+                                                <option>
+                                                    {{ option.value }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Contents</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <textarea class="textarea has-fixed-size"
+                                                name="contents"
+                                                type="text"
+                                                placeholder="e.g r 6/6 l 6/6 good vision"
+                                                value="{{ contents }}"
+                                                rows="3"
+                                                required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal has-text-left">
+                                <div class="field-label"></div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <div class="control">
+                                            <button hx-trigger="click delay:2s" class="button is-link" action="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <hr />
+                    <div id="indicator" class="htmx-indicator">
+                        <progress class="progress is-info"></progress>
+                    </div>
+                    <div id="response"></div>
+                </div>
+            </div>
+            <div class="hero-foot">
+                <p class="has-text-centered">
+                    <a href="https://github.com/shivan-s/optom-letters">Source code</a>
+                </p>
+            </div>
+        </section>
+    </body>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+</html>

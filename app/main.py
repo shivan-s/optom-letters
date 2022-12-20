@@ -68,7 +68,7 @@ async def generate_letters(
         AddressedTo.SPECIALIST.value: f"a referral letter to a specialist about",
         AddressedTo.PATIENT.value: f"an eye report addressed",
     }
-    prompt = f"Write {prompt_lookup[addressed_to]} a patient, named {patient[:25]} signed by an optometrist, named {optometrist[:25]}"
+    prompt = f"Write {prompt_lookup[addressed_to]} a patient, named {patient[:25]} in regards to {contents[:500]} signed by an optometrist, named {optometrist[:25]}"
 
     max_tokens = 2024 - len(prompt.split())
     completion = openai.Completion.create(
